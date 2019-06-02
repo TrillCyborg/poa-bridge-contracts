@@ -17,7 +17,7 @@ const web3Foreign = new Web3(foreignProvider)
 const { HOME_DEPLOYMENT_GAS_PRICE, FOREIGN_DEPLOYMENT_GAS_PRICE } = env
 const GAS_LIMIT_EXTRA = env.DEPLOYMENT_GAS_LIMIT_EXTRA
 
-const deploymentPrivateKey = Buffer.from(DEPLOYMENT_ACCOUNT_PRIVATE_KEY, 'hex')
+const deploymentPrivateKey = DEPLOYMENT_ACCOUNT_PRIVATE_KEY //Buffer.from(DEPLOYMENT_ACCOUNT_PRIVATE_KEY, 'hex')
 
 module.exports = {
   web3Home,

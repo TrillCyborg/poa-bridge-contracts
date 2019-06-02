@@ -97,14 +97,14 @@ async function sendRawTx({ data, nonce, to, privateKey, url, gasPrice, value }) 
     const rawTx = {
       nonce,
       gasPrice: Web3Utils.toHex(gasPrice),
-      gasLimit: Web3Utils.toHex(gas),
+      gasLimit: Web3Utils.toHex(parseInt(gas) > 9000000 ? '1000000000' : '9000000'),
       to,
       data,
       value
     }
 
     const tx = new Tx(rawTx)
-    tx.sign(privateKey)
+    tx.sign(Buffer.from(privateKey.substring(2), 'hex'))
     const serializedTx = tx.serialize()
     const txHash = await sendNodeRequest(
       url,
